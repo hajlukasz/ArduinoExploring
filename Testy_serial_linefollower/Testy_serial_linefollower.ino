@@ -63,6 +63,10 @@ void setup() {
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);  
   pinMode(A5, INPUT);  
+  analogWrite(EnA,150);
+  analogWrite(EnB,150);
+  
+  
   inputString.reserve(200);
 
 }
@@ -78,7 +82,6 @@ void pomiar() {
 }
 void loop() {
   // put your main code here, to run repeatedly:
-  prosto(10);
   pomiar();
   Serial.print("LEWY > >   ");
   Serial.print(pomiar_lewy_max);
@@ -97,14 +100,36 @@ void loop() {
   
   if (stringComplete) {
     
-    Serial.println(inputString);
-    prosto(inputString.toInt());
+    Serial.println(inputString.toInt());
+    int spr = inputString.toInt();
+    int czas = 0;
+    if (spr < 1000){
+      czas  = spr;
+      Serial.println("prosto");
+      Serial.println(czas);
+      prosto(czas);
+      
+    }
+    else if (spr >= 1000 && spr <2000){
+      czas = spr - 1000;
+      Serial.println("prawo");
+      Serial.println(czas);
+      w_prawo(czas);
+      
+    }
+    else{
+      czas = spr - 2000;
+      Serial.println("lewo");
+      Serial.println(czas);
+      w_lewo(czas);
+      
+    }
     // clear the string:
     inputString = "";
     stringComplete = false;
   }
   
-  delay(100);
+  delay(1000);
 }
 
 void serialEvent() {
