@@ -186,7 +186,7 @@ void loop() {
       po_lini(czas);
       
     }
-   
+
     // clear the string:
     inputString = "";
     stringComplete = false;

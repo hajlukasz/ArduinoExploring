@@ -1,9 +1,13 @@
-#define EnA 10
-#define EnB 5
-#define In2 8
-#define In1 9
-#define In4 6
-#define In3 7
+/*
+  pomiary.cpp
+
+*/
+
+#include "Arduino.h"
+#include "pomiary.h"
+
+pomiary::pomiary()
+{
 int pomiar_lewy_max = 0;
 int pomiar_lewy = 0;
 int pomiar_srodek = 0;
@@ -14,9 +18,6 @@ int kalibracja_lewy =1023;
 int kalibracja_prawy =1023;
 int kalibracja_prawy_max =1023;
 int kalibracja_srodek =1023;
-
-/*
-setup________________________________
 
   pinMode(EnA, OUTPUT);
   pinMode(EnB, OUTPUT);
@@ -33,16 +34,11 @@ setup________________________________
   pinMode(A5, INPUT);  
   analogWrite(EnA,150);
   analogWrite(EnB,185);
-*/
+}
 
-
-/*--------- pomiar_analog---------------- 
- * pomiar pieciu wartosci analogowy z czujnikow i przerobienie 
- * ich na 0 i 1 korzystajac z wczesniejszej kalibracji
- */
-void pomiar() {
-  
-  pomiar_lewy_max = analogRead(A4);
+void pomiary::pomiar()
+{
+    pomiar_lewy_max = analogRead(A4);
   pomiar_lewy = analogRead(A3);
   pomiar_srodek = analogRead(A2);
   pomiar_prawy = analogRead(A1);
@@ -85,23 +81,15 @@ void pomiar() {
    else {
     pomiar_prawy_max = 0;
   }
-
+ 
 }
 
-
-
-
-/*-------------------kalibracja---------------------
- * jako Å¼e uÅ¼ywam odczytÃ³w analogowych potrzebuje stowrzyc sobie skale
- * kiedy przyjac 0 a kiedy 1 w zaleznosci od podloza 
- ---------------------------------------------------- */
- 
-void kalibracja() {
-
-  int roznica = 150;                //zmien jesli chcesz zeby Å‚apaÅ‚ jedynke przy wiekszej zmianie
+void pomiary::kalibracja()
+{
+  int roznica = 150;                //zmien jesli chcesz zeby ³apa³ jedynke przy wiekszej zmianie
   int pomiary_kalibracja[9][4];   //tablica na potrzebne pomiary
 
-  while(kalibracja_lewy_max > 800 || kalibracja_lewy > 800 || kalibracja_srodek > 800 || kalibracja_prawy > 800 || kalibracja_prawy_max > 800){              //petla z takimi warunnkami zeby mi nie wyszla gÅ‚upota [case np jak stoi jednym czujnikiem przypadkiem na lini zamiast na podÅ‚ozu]
+  while(kalibracja_lewy_max > 800 || kalibracja_lewy > 800 || kalibracja_srodek > 800 || kalibracja_prawy > 800 || kalibracja_prawy_max > 800){              //petla z takimi warunnkami zeby mi nie wyszla g³upota [case np jak stoi jednym czujnikiem przypadkiem na lini zamiast na pod³ozu]
   
     for (int i =0;i<10; i++){
       pomiar();
