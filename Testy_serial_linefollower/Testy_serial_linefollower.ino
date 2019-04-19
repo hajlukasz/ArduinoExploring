@@ -13,6 +13,34 @@ int pomiar_prawy_max = 0;
 String inputString = "";         // a String to hold incoming data
 bool stringComplete = false;  // whether the string is complete
 
+void po_lini(int czas){
+  int n = czas / 30;
+  n = ceil(n);
+  
+  for (int i = 0; i<n;i++){
+   pomiar();
+
+
+
+  if ((pomiar_prawy < 150) && (pomiar_lewy <150)) {
+    prosto(30);
+  }
+
+  else if ((pomiar_prawy >150) && (pomiar_lewy <150)){
+    w_prawo(30);
+  }
+
+  else if ((pomiar_prawy < 150) && (pomiar_lewy > 150)){
+    w_lewo(30);
+  }
+
+  else {
+    digitalWrite(2,HIGH);
+  }
+     
+  }
+}
+
 void cofaj(int czas){
   //silnik lewy
  
@@ -151,6 +179,13 @@ void loop() {
       
     }
 
+     else if (spr >= 4000 && spr <6000){
+        czas = spr - 4000;
+      Serial.println("following");
+      Serial.println(czas);
+      po_lini(czas);
+      
+    }
    
     // clear the string:
     inputString = "";
