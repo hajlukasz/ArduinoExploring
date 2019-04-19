@@ -13,6 +13,17 @@ int pomiar_prawy_max = 0;
 String inputString = "";         // a String to hold incoming data
 bool stringComplete = false;  // whether the string is complete
 
+void cofaj(int czas){
+  //silnik lewy
+ 
+  digitalWrite(In2, HIGH);
+  digitalWrite(In4, HIGH);
+  
+  delay(czas);
+  
+  digitalWrite(In2, LOW);
+  digitalWrite(In4, LOW);
+}
 
 void prosto(int czas){
   //silnik lewy
@@ -29,21 +40,29 @@ void prosto(int czas){
 void w_lewo (int czas){
   digitalWrite(In1, HIGH);
   digitalWrite(In3, LOW);
+  digitalWrite(In2, LOW);
+  digitalWrite(In4, HIGH);
   
   delay(czas);
   
   digitalWrite(In1, LOW);
   digitalWrite(In3, LOW);
+  digitalWrite(In2, LOW);
+  digitalWrite(In4, LOW);
 }
 
 void w_prawo (int czas){
   digitalWrite(In3, HIGH);
   digitalWrite(In1, LOW);
+  digitalWrite(In2, HIGH);
+  digitalWrite(In4, LOW);
 
   delay(czas);
 
   digitalWrite(In1, LOW);
   digitalWrite(In3, LOW);
+  digitalWrite(In2, LOW);
+  digitalWrite(In4, LOW);
 }
 
 void setup() {
@@ -64,7 +83,7 @@ void setup() {
   pinMode(A4, INPUT);  
   pinMode(A5, INPUT);  
   analogWrite(EnA,150);
-  analogWrite(EnB,150);
+  analogWrite(EnB,185);
   
   
   inputString.reserve(200);
@@ -117,17 +136,26 @@ void loop() {
       w_prawo(czas);
       
     }
-    else{
+    else if (spr >= 2000 && spr <3000){
       czas = spr - 2000;
       Serial.println("lewo");
       Serial.println(czas);
       w_lewo(czas);
       
     }
+    else if (spr >= 3000 && spr <4000){
+        czas = spr - 3000;
+      Serial.println("lewo");
+      Serial.println(czas);
+      cofaj(czas);
+      
+    }
+
+   
     // clear the string:
     inputString = "";
     stringComplete = false;
-  }
+}
   
   delay(1000);
 }
