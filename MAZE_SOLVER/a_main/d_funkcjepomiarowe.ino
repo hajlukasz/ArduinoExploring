@@ -9,7 +9,7 @@ void pomiar() {
   
   pomiar_lewy_max = analogRead(A4);
   pomiar_lewy = analogRead(A3);
-  pomiar_srodek = analogRead(A2);
+  pomiar_srodek = analogRead(A5);
   pomiar_prawy = analogRead(A1);
   pomiar_prawy_max = analogRead(A0);  
 
@@ -64,7 +64,7 @@ void pomiar_print(){
   
   pomiar_lewy_max = analogRead(A4);
   pomiar_lewy = analogRead(A3);
-  pomiar_srodek = analogRead(A2);
+  pomiar_srodek = analogRead(A5);
   pomiar_prawy = analogRead(A1);
   pomiar_prawy_max = analogRead(A0);  
   Serial.print("LEWY > >   ");
@@ -91,7 +91,7 @@ void pomiar_print(){
  
 void kalibracja() {
 
-  int roznica = 100;                //zmien jesli chcesz zeby łapał jedynke przy wiekszej zmianie
+  int roznica = 80;                //zmien jesli chcesz zeby łapał jedynke przy wiekszej zmianie
   int pomiary_kalibracja[9][4];   //tablica na potrzebne pomiary
 
  while(kalibracja_lewy_max > 800 || kalibracja_lewy > 800 || kalibracja_srodek > 800 || kalibracja_prawy > 800 || kalibracja_prawy_max > 800){              //petla z takimi warunnkami zeby mi nie wyszla głupota [case np jak stoi jednym czujnikiem przypadkiem na lini zamiast na podłozu]
@@ -99,7 +99,7 @@ void kalibracja() {
     for (int i =0;i<10; i++){
       pomiar_lewy_max = analogRead(A4);
       pomiar_lewy = analogRead(A3);
-      pomiar_srodek = analogRead(A2);
+      pomiar_srodek = analogRead(A5);
       pomiar_prawy = analogRead(A1);
       pomiar_prawy_max = analogRead(A0);  
       pomiary_kalibracja[i][0] = pomiar_lewy_max;

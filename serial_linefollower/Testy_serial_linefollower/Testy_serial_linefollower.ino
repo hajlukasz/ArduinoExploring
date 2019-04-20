@@ -111,7 +111,7 @@ void setup() {
   pinMode(A4, INPUT);  
   pinMode(A5, INPUT);  
   analogWrite(EnA,150);
-  analogWrite(EnB,185);
+  analogWrite(EnB,180);
   
   
   inputString.reserve(200);
