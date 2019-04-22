@@ -34,7 +34,7 @@ void loop() {
       
     }
 
-     else if (spr >= 4000 && spr <6000){
+     else if (spr >= 4000 && spr <10000){
         czas = spr - 4000;
       Serial.println("following");
       Serial.println(czas);
@@ -42,10 +42,11 @@ void loop() {
       
     }
 
-      else if (spr >= 6000){
+      else if (spr >= 10000){
+      delay(1000);
       decyduj();
-      manewr_prawo();
-      
+      delay(1000);
+      manewr_lewo();
     }
 
     // clear the string:

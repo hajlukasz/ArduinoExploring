@@ -1,9 +1,9 @@
-#define EnA 10
-#define EnB 4
-#define In2 8
-#define In1 9
-#define In4 5
-#define In3 6
+#define EnA 5   //prawy
+#define EnB 10  // lewy
+#define In1 6   // prawy ?tyl
+#define In2 7   // prawy przod
+#define In3 8   //lewy tył
+#define In4 9   //lewy przod
 
 int pomiar_lewy_max = 0;
 int pomiar_lewy = 0;

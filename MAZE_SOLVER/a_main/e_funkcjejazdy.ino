@@ -24,13 +24,54 @@ void po_lini(int czas){
     w_lewo(30);
   }
 
-  else {
+ /* else {
+    delay(1000);
+    Serial.println("decyduje");
+    decyduj();
+    delay(1000);
     
-  }
-   //else if (((pomiar_prawy == 1) && (pomiar_lewy == 1)) || pomiar_lewy_max == 1 || pomiar_prawy_max == 1 ){
-  //  w_lewo(30);
-  //}
+    switch(mode){
+      case 1:
+         manewr_lewo();
+      break;
+
+      case 2:
+         manewr_lewo();
+      break;
+
+      case 3:
+         manewr_prawo();
+      break;
+
+      case 4:
+         manewr_lewo();
+      break;
+
+
+      case 5:
+         //jedz dalej
+      break;
+
+      case 6:
+         manewr_lewo();
+      break;
+
+      case 7:
+         manewr_zawroc();
+      break;
+
+      case 8:
+         for( ; ; ){
+          
+         }
+      break;
      
+    }
+    delay(3000);
+    Serial.print("czekam po manewrze");
+
+    }
+     */
   }
 }
 
@@ -67,7 +108,7 @@ for (int i =0; i<10;i++){
 }
      
 
-for (int i = 0; i<10; i++){
+/*for (int i = 0; i<10; i++){
      Serial.print(pomiary_decyduj[i][0]) ;
      Serial.print("  ||  ");
       Serial.print(pomiary_decyduj[i][1]) ;
@@ -77,7 +118,7 @@ for (int i = 0; i<10; i++){
       Serial.print(pomiary_decyduj[i][3]) ;
      Serial.print("  ||  ");
       Serial.println(pomiary_decyduj[i][4]) ;
-}
+} */
 
 int suma[5];
 
@@ -126,17 +167,27 @@ else if((suma[0] >= 9) &&(suma[4] >= 9) && (suma[2] >= 2) ){
 
 }
 
+
+
+
 void manewr_lewo(){
   
     //  Serial.print("90 w lewo");
-      prosto(300);
-      w_lewo(350);
+              w_lewo(400);
+      prosto(250);
+       w_lewo(350);
+    
+     
       do{
-         pomiar_srodek = analogRead(A5);
+         pomiar();
          w_lewo(30);
-          Serial.print("_troche w lewo");
-      }while(pomiar_srodek ==0);      
+          Serial.println("_troche w lewo");
+      }while(pomiar_srodek == 0);      
 }
+
+
+
+
 
 
 void manewr_prawo(){
@@ -156,17 +207,19 @@ void manewr_prawo(){
 
 
 
-void cofaj(int czas){
-  //silnik lewy
- 
-  digitalWrite(In2, HIGH);
-  digitalWrite(In4, HIGH);
-  
-  delay(czas);
-  
-  digitalWrite(In2, LOW);
-  digitalWrite(In4, LOW);
+
+void manewr_zawroc(){
+  prosto(200);
+  w_prawo(350);
+  do{
+         pomiar();
+         w_prawo(30);
+          Serial.print("_troche w prawo");
+          delay(20);
+      }while(pomiar_srodek ==0);  
 }
+
+
 
 void prosto(int czas){
   //silnik lewy
@@ -180,11 +233,23 @@ void prosto(int czas){
   digitalWrite(In3, LOW);
 }
 
-void w_lewo (int czas){
-  digitalWrite(In1, HIGH);
-  digitalWrite(In3, LOW);
-  digitalWrite(In2, LOW);
+void cofaj(int czas){
+  //silnik lewy
+ 
+  digitalWrite(In2, HIGH);
   digitalWrite(In4, HIGH);
+  
+  delay(czas);
+  
+  digitalWrite(In2, LOW);
+  digitalWrite(In4, LOW);
+}
+
+void w_prawo (int czas){
+  digitalWrite(In2, LOW);
+  digitalWrite(In1, LOW);
+  digitalWrite(In4, LOW);
+  digitalWrite(In3, HIGH);
   
   delay(czas);
   
@@ -194,11 +259,11 @@ void w_lewo (int czas){
   digitalWrite(In4, LOW);
 }
 
-void w_prawo (int czas){
-  digitalWrite(In3, HIGH);
-  digitalWrite(In1, LOW);
-  digitalWrite(In2, HIGH);
-  digitalWrite(In4, LOW);
+void w_lewo (int czas){
+  digitalWrite(In1, HIGH);
+  digitalWrite(In3, LOW);
+  digitalWrite(In2, LOW);
+  digitalWrite(In4, HIGH);
 
   delay(czas);
 

@@ -13,8 +13,8 @@ void setup(){
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);  
   pinMode(A5, INPUT);  
-  analogWrite(EnA,150);
-  analogWrite(EnB,155);
+  analogWrite(EnA,175);
+  analogWrite(EnB,175);
   
   Serial.print("hej");
   
