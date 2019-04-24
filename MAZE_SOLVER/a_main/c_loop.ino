@@ -1,3 +1,9 @@
+
+
+
+
+
+
 void loop() {
  
   if (stringComplete) {
@@ -34,7 +40,7 @@ void loop() {
       
     }
 
-     else if (spr >= 4000 && spr <10000){
+     else if (spr >= 4000 && spr <20000){
         czas = spr - 4000;
       Serial.println("following");
       Serial.println(czas);

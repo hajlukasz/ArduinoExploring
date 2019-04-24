@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 /*-----------------------------pomiar---------------------------
  * pomiar pieciu wartosci analogowy z czujnikow i przerobienie 
  * ich na 0 i 1 korzystajac z wczesniejszej kalibracji
@@ -57,9 +62,14 @@ void pomiar() {
 
 
 
-/*-------------------pomiar_print---------------------
+
+
+
+/*----------------------pomiar_print-----------------------------
  * pozwala wyisac ładnie analogowe odczyty
  */
+
+ 
 void pomiar_print(){
   
   pomiar_lewy_max = analogRead(A4);
@@ -84,6 +94,8 @@ void pomiar_print(){
 
 
 
+
+
 /*-------------------kalibracja---------------------
  * jako że używam odczytów analogowych potrzebuje stowrzyc sobie skale
  * kiedy przyjac 0 a kiedy 1 w zaleznosci od podloza 
@@ -91,7 +103,7 @@ void pomiar_print(){
  
 void kalibracja() {
 
-  int roznica = 80;                //zmien jesli chcesz zeby łapał jedynke przy wiekszej zmianie
+  int roznica = 150;                //zmien jesli chcesz zeby łapał jedynke przy wiekszej zmianie
   int pomiary_kalibracja[9][4];   //tablica na potrzebne pomiary
 
  while(kalibracja_lewy_max > 800 || kalibracja_lewy > 800 || kalibracja_srodek > 800 || kalibracja_prawy > 800 || kalibracja_prawy_max > 800){              //petla z takimi warunnkami zeby mi nie wyszla głupota [case np jak stoi jednym czujnikiem przypadkiem na lini zamiast na podłozu]

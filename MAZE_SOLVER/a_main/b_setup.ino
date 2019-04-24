@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 void setup(){
   Serial.begin(9600);
   pinMode(EnA, OUTPUT);
@@ -13,11 +20,10 @@ void setup(){
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);  
   pinMode(A5, INPUT);  
-  analogWrite(EnA,175);
-  analogWrite(EnB,175);
+  analogWrite(EnA,150);
+  analogWrite(EnB,150);
   
-  Serial.print("hej");
-  
+  Serial.println("hej, czekaj na kalibracje");
   kalibracja();
 
 }
