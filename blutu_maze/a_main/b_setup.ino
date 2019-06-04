@@ -7,13 +7,14 @@
 
 void setup(){
   Serial.begin(9600);
+  BTserial.begin(9600);
   pinMode(EnA, OUTPUT);
   pinMode(EnB, OUTPUT);
   pinMode(In1, OUTPUT);
   pinMode(In2, OUTPUT);
   pinMode(In3, OUTPUT);
   pinMode(In4, OUTPUT);
-  pinMode(2,OUTPUT);
+ 
   pinMode(A0, INPUT);
   pinMode(A1, INPUT);
   pinMode(A2, INPUT);
@@ -23,7 +24,7 @@ void setup(){
   analogWrite(EnA,170);
   analogWrite(EnB,150);
   
-  Serial.println("hej, czekaj na kalibracje");
+  BTserial.println("hej, czekaj na kalibracje");
   kalibracja();
 
 }

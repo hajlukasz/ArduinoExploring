@@ -18,7 +18,7 @@ void manewr_lewo(){
       do{
          pomiar();
          w_lewo(20);
-          Serial.println("_troche w lewo");
+          BTserial.println("_troche w lewo");
       }while(pomiar_srodek == 0);      
 }
 
@@ -38,7 +38,7 @@ void manewr_prawo(){
       do{
          pomiar();
          w_prawo(23);
-          Serial.print("_troche w prawo");
+          BTserial.print("_troche w prawo");
           //delay();
       }while(pomiar_srodek ==0);      
 }
@@ -53,8 +53,10 @@ void manewr_zawroc(){
   
   do{
          pomiar();
-         w_prawo(20);
-          Serial.print("_troche w prawo");
+         cofaj(200);
+         w_prawo(200);
+         w_prawo(40);
+          BTserial.print("_troche w prawo");
           delay(20);
       }while(pomiar_srodek ==0);  
 }

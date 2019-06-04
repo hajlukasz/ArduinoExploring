@@ -65,14 +65,14 @@ void po_lini(int czas){
 
       case 8:
          for( ; ; ){
-          Serial.print("HURA DOJECHALEM DO KOŃCA!");
+          BTserial.print("HURA DOJECHALEM DO KOŃCA!");
           delay(999);
          }
       break;
      
     }
     delay(1000);
-    Serial.print("wykonałem manewr");
+    BTserial.print("wykonałem manewr");
 
     }
      

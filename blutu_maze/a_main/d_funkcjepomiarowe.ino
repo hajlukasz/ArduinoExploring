@@ -77,18 +77,18 @@ void pomiar_print(){
   pomiar_srodek = analogRead(A5);
   pomiar_prawy = analogRead(A1);
   pomiar_prawy_max = analogRead(A0);  
-  Serial.print("LEWY > >   ");
-  Serial.print(pomiar_lewy_max);
-  Serial.print("  || ");
-  Serial.print(pomiar_lewy);
-  Serial.print("  || ");
-  Serial.print(pomiar_srodek);
-  Serial.print("  || ");
-  Serial.print(pomiar_prawy);
-  Serial.print("  || ");
-  Serial.print(pomiar_prawy_max);
-  Serial.println("  < < PRAWY");
-  Serial.println("_____________________________________________________________");
+  BTserial.print("LEWY > >   ");
+  BTserial.print(pomiar_lewy_max);
+  BTserial.print("  || ");
+  BTserial.print(pomiar_lewy);
+  BTserial.print("  || ");
+  BTserial.print(pomiar_srodek);
+  BTserial.print("  || ");
+  BTserial.print(pomiar_prawy);
+  BTserial.print("  || ");
+  BTserial.print(pomiar_prawy_max);
+  BTserial.println("  < < PRAWY");
+  BTserial.println("_____________________________________________________________");
 }
 
 
@@ -140,5 +140,5 @@ void kalibracja() {
     
   }
 
-  Serial.println("skalibrowano!");
+  BTserial.println("skalibrowano!");
 }

@@ -24,7 +24,7 @@
 void decyduj(){
 int pomiary_decyduj[10][5];
 
-cofaj(115);
+cofaj(150);
 
 for (int i =0; i<10;i++){
       pomiar();
@@ -33,20 +33,20 @@ for (int i =0; i<10;i++){
       pomiary_decyduj[i][2] = pomiar_srodek;
       pomiary_decyduj[i][3] = pomiar_prawy;
       pomiary_decyduj[i][4] = pomiar_prawy_max;
-      prosto(45);   
+      prosto(40);   
 }
      
 
 for (int i = 0; i<10; i++){
-     Serial.print(pomiary_decyduj[i][0]) ;
-     Serial.print("  ||  ");
-      Serial.print(pomiary_decyduj[i][1]) ;
-     Serial.print("  ||  ");
-      Serial.print(pomiary_decyduj[i][2]) ;
-     Serial.print("  ||  ");
-      Serial.print(pomiary_decyduj[i][3]) ;
-     Serial.print("  ||  ");
-      Serial.println(pomiary_decyduj[i][4]) ;
+     BTserial.print(pomiary_decyduj[i][0]) ;
+     BTserial.print("  ||  ");
+      BTserial.print(pomiary_decyduj[i][1]) ;
+     BTserial.print("  ||  ");
+      BTserial.print(pomiary_decyduj[i][2]) ;
+     BTserial.print("  ||  ");
+      BTserial.print(pomiary_decyduj[i][3]) ;
+     BTserial.print("  ||  ");
+      BTserial.println(pomiary_decyduj[i][4]) ;
 } 
 
 int suma[5];
@@ -95,7 +95,7 @@ else if((suma[0] == 0) &&(suma[4] == 0) && (suma[2] == 0) ){
 else if((suma[0] >= 9) &&(suma[4] >= 9) && (suma[2] >= 2) ){
   mode = 8;     // koniec trasy
 }
- Serial.println("MODE:");
- Serial.println(mode);
+ BTserial.println("MODE:");
+ BTserial.println(mode);
 
 }
