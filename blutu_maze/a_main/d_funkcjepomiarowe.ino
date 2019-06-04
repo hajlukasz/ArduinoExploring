@@ -142,3 +142,34 @@ void kalibracja() {
 
   BTserial.println("skalibrowano!");
 }
+
+
+
+
+
+/*------------logika--------------------
+ * potrzebna przy manewrach do zatrzymania obrotu w takim ustawieniu czujników 
+ * z jakiego moze potem dalej normalnie ruszyc
+ * 
+ ------------------------------------------------*/
+bool logika(){
+  if((pomiar_prawy == 0) && (pomiar_lewy == 1) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 1)){
+    return 0;
+  }
+
+  else if ((pomiar_prawy == 1) && (pomiar_lewy == 0) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 0)){
+    return 0;
+  }
+
+  else if ((pomiar_prawy == 0) && (pomiar_lewy == 1) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 0)){
+    return 0;
+  }
+
+   else if ((pomiar_prawy == 1) && (pomiar_lewy == 0) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 0)){
+    return 0;
+  }
+
+  else{
+    return 1;
+  }
+}

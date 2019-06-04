@@ -9,17 +9,14 @@
 
 void manewr_lewo(){
   
-    //  Serial.print("90 w lewo");
-              w_lewo(400);
-      prosto(250);
-       w_lewo(350);
-    
-     
-      do{
-         pomiar();
-         w_lewo(20);
-          BTserial.println("_troche w lewo");
-      }while(pomiar_srodek == 0);      
+  w_lewo(300);
+  prosto(200);
+           
+  do{
+    pomiar();
+    w_lewo(30);
+    //BTserial.println("_troche w lewo");
+  }while(logika());       
 }
 
 
@@ -32,15 +29,14 @@ void manewr_lewo(){
 
 void manewr_prawo(){
   
-    //  Serial.print("90 w lewo");
-     w_prawo(250);
-  prosto(120);
-      do{
-         pomiar();
-         w_prawo(23);
-          BTserial.print("_troche w prawo");
-          //delay();
-      }while(pomiar_srodek ==0);      
+  w_prawo(250);
+  prosto(220);
+  
+  do{
+    pomiar();
+    w_prawo(30);
+    //BTserial.print("_troche w prawo");
+  }while(logika());      // kreci sie dopoki nie usyska tego co chcemy 
 }
 
 
@@ -50,22 +46,19 @@ void manewr_prawo(){
 
 void manewr_zawroc(){
   
-  
+  w_prawo(300);
   do{
-         pomiar();
-         cofaj(200);
-         w_prawo(200);
-         w_prawo(40);
-          BTserial.print("_troche w prawo");
-          delay(20);
-      }while(pomiar_srodek ==0);  
+    pomiar();
+    w_prawo(30);
+    //BTserial.print("_troche w prawo");
+    //delay(20);
+    }while(logika() );  
 }
 
 
 //-------------------------------------------------------------------
 
 void prosto(int czas){
-  //silnik lewy
  
   digitalWrite(In1, HIGH);
   digitalWrite(In3, HIGH);
@@ -81,8 +74,7 @@ void prosto(int czas){
 //-------------------------------------------------------------------
 
 void cofaj(int czas){
-  //silnik lewy
- 
+
   digitalWrite(In2, HIGH);
   digitalWrite(In4, HIGH);
   
@@ -97,6 +89,7 @@ void cofaj(int czas){
 //-------------------------------------------------------------------
 
 void w_prawo (int czas){
+  
   digitalWrite(In2, HIGH);
   digitalWrite(In1, LOW);
   digitalWrite(In4, LOW);
@@ -117,6 +110,7 @@ void w_prawo (int czas){
 //-------------------------------------------------------------------
 
 void w_lewo (int czas){
+  
   digitalWrite(In1, HIGH);
   digitalWrite(In3, LOW);
   digitalWrite(In2, LOW);
@@ -133,7 +127,8 @@ void w_lewo (int czas){
 
 
 
-// ----------------------wysrodkowanie z lekkim cofnieciem do tyłu------------------------
+// ----------------------wysrodkowanie z lekkim cofnieciem do tyłu------------------------ 
+// jeszczeni nie próbowałem jakby z tym dzialalo i czy to wgl jest potrzebne czy nie lepiej zoptymalizowac decyduj jakos
 
 
 void wysrodkuj(){
