@@ -103,7 +103,7 @@ void pomiar_print(){
  
 void kalibracja() {
 
-  int roznica = 115;                //zmien jesli chcesz zeby łapał jedynke przy wiekszej zmianie
+  int roznica = 135;                //zmien jesli chcesz zeby łapał jedynke przy wiekszej zmianie
   int pomiary_kalibracja[9][4];   //tablica na potrzebne pomiary
 
  while(kalibracja_lewy_max > 800 || kalibracja_lewy > 800 || kalibracja_srodek > 800 || kalibracja_prawy > 800 || kalibracja_prawy_max > 800){              //petla z takimi warunnkami zeby mi nie wyszla głupota [case np jak stoi jednym czujnikiem przypadkiem na lini zamiast na podłozu]
@@ -134,7 +134,7 @@ void kalibracja() {
 
     kalibracja_lewy_max = suma[0] / 10 + roznica;
     kalibracja_lewy = suma[1] /10 + roznica;
-    kalibracja_srodek = suma[2] /10+ roznica;
+    kalibracja_srodek = suma[2] /10+ roznica - 35; //odjalem bo srodek jest kluczowy w slepych uliczkach
     kalibracja_prawy = suma[3] /10+ roznica;
     kalibracja_prawy_max = suma[4] /10+ roznica;
     
@@ -153,19 +153,15 @@ void kalibracja() {
  * 
  ------------------------------------------------*/
 bool logika(){
-  if((pomiar_prawy == 0) && (pomiar_lewy == 1) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 1)){
+  if((pomiar_prawy == 0) && (pomiar_lewy == 1) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 0 || pomiar_srodek == 1)){
     return 0;
   }
 
-  else if ((pomiar_prawy == 1) && (pomiar_lewy == 0) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 0)){
+  else if ((pomiar_prawy == 1) && (pomiar_lewy == 0) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 0 || pomiar_srodek == 1)){
     return 0;
   }
 
-  else if ((pomiar_prawy == 0) && (pomiar_lewy == 1) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 0)){
-    return 0;
-  }
-
-   else if ((pomiar_prawy == 1) && (pomiar_lewy == 0) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 0)){
+  else if ((pomiar_prawy == 0) && (pomiar_lewy == 0) && (pomiar_lewy_max == 0) && (pomiar_prawy_max == 0) && (pomiar_srodek == 1)){
     return 0;
   }
 

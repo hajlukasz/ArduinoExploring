@@ -21,7 +21,7 @@ void setup(){
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);  
   pinMode(A5, INPUT);  
-  analogWrite(EnA,170);
+  analogWrite(EnA,180);
   analogWrite(EnB,150);
   
   BTserial.println("hej, czekaj na kalibracje");

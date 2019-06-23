@@ -2,8 +2,6 @@
 
 
 
-
-
 void loop() {
  
   if (stringComplete) {
@@ -48,17 +46,13 @@ void loop() {
       
     }
 
-      else if (spr >= 10000){
-      delay(1000);
-      decyduj();
-      delay(1000);
-      manewr_lewo();
-    }
 
     // clear the string:
     inputString = "";
     stringComplete = false;
 }
+
+
   
   delay(1000);
   pomiar_print();

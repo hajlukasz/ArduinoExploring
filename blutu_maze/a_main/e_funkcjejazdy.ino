@@ -9,14 +9,16 @@
 
 void manewr_lewo(){
   
-  w_lewo(300);
-  prosto(200);
+  w_lewo(350);
+  prosto(250);
            
   do{
     pomiar();
-    w_lewo(30);
+    w_lewo(45);
     //BTserial.println("_troche w lewo");
-  }while(logika());       
+  }while(logika());    
+
+  BTserial.println("wykonałem manewr w lewo");
 }
 
 
@@ -29,14 +31,16 @@ void manewr_lewo(){
 
 void manewr_prawo(){
   
-  w_prawo(250);
-  prosto(220);
+  w_prawo(350);
+  prosto(250);
   
   do{
     pomiar();
-    w_prawo(30);
+    w_prawo(45);
     //BTserial.print("_troche w prawo");
   }while(logika());      // kreci sie dopoki nie usyska tego co chcemy 
+
+  BTserial.println("wykonałem manewr w prawo");
 }
 
 
@@ -47,12 +51,20 @@ void manewr_prawo(){
 void manewr_zawroc(){
   
   w_prawo(300);
+  int j = 0;
   do{
+    j +=1;
+    if (j>80){
+      cofaj(150);
+      j =0;
+    }
     pomiar();
-    w_prawo(30);
+    w_prawo(40);
     //BTserial.print("_troche w prawo");
     //delay(20);
-    }while(logika() );  
+    }while(logika());  
+
+    BTserial.println("wykonałem manewr zawracania");
 }
 
 

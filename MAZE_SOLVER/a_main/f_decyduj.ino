@@ -24,7 +24,7 @@
 void decyduj(){
 int pomiary_decyduj[10][5];
 
-cofaj(115);
+cofaj(175);
 
 for (int i =0; i<10;i++){
       pomiar();
@@ -92,7 +92,7 @@ else if((suma[0] == 0) &&(suma[4] == 0) && (suma[2] == 0) ){
   mode = 7;     // slepa uliczka
 }
 
-else if((suma[0] >= 9) &&(suma[4] >= 9) && (suma[2] >= 2) ){
+else if((suma[0] >= 7) &&(suma[4] >= 7) && (suma[2] >= 2) ){
   mode = 8;     // koniec trasy
 }
  Serial.println("MODE:");
